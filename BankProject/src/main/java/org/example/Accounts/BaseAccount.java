@@ -44,4 +44,8 @@ public class BaseAccount {
         }
         this.balance -= balance;
     }
+
+    public BaseHuman GetOwner() {
+        return owner;
+    }
 }
