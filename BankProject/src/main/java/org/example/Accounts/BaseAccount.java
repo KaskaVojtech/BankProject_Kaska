@@ -1,6 +1,6 @@
 package org.example.Accounts;
 
-import org.example.people.BaseHuman;
+import org.example.AccountsOwners.BaseAccountOwner;
 
 public class BaseAccount {
     private String uuid;
@@ -9,9 +9,9 @@ public class BaseAccount {
 
     private String accountNumber;
 
-    private BaseHuman owner;
+    private BaseAccountOwner owner;
 
-    public BaseAccount(String uuid, double balance, String accountNumber, BaseHuman owner) {
+    public BaseAccount(String uuid, double balance, String accountNumber, BaseAccountOwner owner) {
         this.uuid = uuid;
         this.balance = balance;
         this.accountNumber = accountNumber;
@@ -30,22 +30,11 @@ public class BaseAccount {
         return accountNumber;
     }
 
-    public BaseHuman getOwner() {
+    public BaseAccountOwner getOwner() {
         return owner;
     }
 
-    public void AddBalance(double balance) {
-        this.balance += balance;
-    }
-
-    public void DecreaseBalance(double balance) {
-        if(this.balance - balance < 0) {
-            throw new IllegalArgumentException("Balance cannot be negative");
-        }
-        this.balance -= balance;
-    }
-
-    public BaseHuman GetOwner() {
-        return owner;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }
