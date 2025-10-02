@@ -4,12 +4,14 @@ import org.example.Accounts.BaseAccount;
 
 public class AccountSecurityService {
 
+     int trashhold = 10000;
+
     public void addBalanceChecker(BaseAccount account, double balance) {
         if(balance <= 0) {
             throw new IllegalArgumentException("Balance is negative");
         }
-        if(balance > 10000){
-            throw new IllegalArgumentException("You can not add more than 10000");
+        if(balance > trashhold) {
+            throw new IllegalArgumentException("You can not add more than " + trashhold);
         }
         if(account.getOwner().getFirstName().equals("Filip")) {
             throw new IllegalArgumentException("Filipové nemůžou přidávat peníze");
