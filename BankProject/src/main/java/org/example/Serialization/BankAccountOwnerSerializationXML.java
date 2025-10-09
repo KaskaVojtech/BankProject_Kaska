@@ -23,10 +23,7 @@ public class BankAccountOwnerSerializationXML implements Serialization {
 
         BaseAccountOwner owner = (BaseAccountOwner) object;
         SerializedAccountOwner serializedAccountOwner =
-                accountOwnerSerializedFactory.createSerializedAccountOwner(
-                        owner.getFirstName(),
-                        owner.getLastName()
-                );
+                accountOwnerSerializedFactory.createSerializedAccountOwner(owner);
 
         try {
             String xml = xmlMapper.writeValueAsString(serializedAccountOwner);
