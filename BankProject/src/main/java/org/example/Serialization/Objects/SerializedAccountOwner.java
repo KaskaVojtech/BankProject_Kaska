@@ -1,14 +1,12 @@
 package org.example.Serialization.Objects;
 
-public class SerializedAccountOwner {
-    public String uuid;
-    public String firstName;
-    public String lastName;
+import org.example.AccountsOwners.BaseAccountOwner;
 
-    public SerializedAccountOwner(String uuid, String firstName, String lastName) {
-        this.uuid = uuid;
-        this.firstName = firstName;
-        this.lastName = lastName;
+public class SerializedAccountOwner {
+    public BaseAccountOwner baseAccountOwner;
+
+    public SerializedAccountOwner(BaseAccountOwner baseAccountOwner) {
+        this.baseAccountOwner = baseAccountOwner;
     }
 
 }

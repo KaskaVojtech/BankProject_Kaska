@@ -23,10 +23,7 @@ public class BankAccountOwnerSerializationJSON implements Serialization {
 
         BaseAccountOwner owner = (BaseAccountOwner) object;
         SerializedAccountOwner serializedAccountOwner =
-                accountOwnerSerializedFactory.createSerializedAccountOwner(
-                        owner.getFirstName(),
-                        owner.getLastName()
-                );
+                accountOwnerSerializedFactory.createSerializedAccountOwner(owner);
         String json = gson.toJson(serializedAccountOwner);
         return json;
 
