@@ -52,7 +52,7 @@ public class BankAccountOwnerSerializationXML implements Serialization {
             return xmlMapper.readValue(string, SerializedAccountOwner.class);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Chyba při deserializaci XML", e);
+            throw new RuntimeException("error", e);
         }
     }
 }

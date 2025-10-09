@@ -4,7 +4,7 @@
     <file type="web" url="file://$PROJECT_DIR$/BankProject" />
     <file type="web" url="file://$PROJECT_DIR$/test" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true" project-jdk-name="openjdk-25" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" project-jdk-name="openjdk-25" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
