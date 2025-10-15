@@ -4,12 +4,18 @@ import org.example.Accounts.BaseAccount;
 
 public class AccountValidator {
 
+    private double trashold = 10_000;
+
     public boolean canDeposit(BaseAccount account, double amount) {
+        if(amount > trashold){
+            return false;
+        }
         return amount > 0;
     }
 
     public boolean canWithdraw(BaseAccount account, double amount) {
         if (amount <= 0) return false;
+
         return account.getBalance() >= amount;
     }
 
