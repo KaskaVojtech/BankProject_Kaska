@@ -2,11 +2,11 @@ package org.example.Factories;
 
 import org.example.AccountsOwners.BaseAccountOwner;
 import org.example.Serialization.Objects.SerializedAccountOwner;
-import org.example.Services.UniqueNumberGenerator;
+import org.example.Services.Generators.IDGenerator;
 
 public class AccountOwnerSerializedFactory {
 
-    UniqueNumberGenerator uniqueNumberGenerator = new UniqueNumberGenerator();
+    IDGenerator IDGenerator = new IDGenerator();
 
     public AccountOwnerSerializedFactory() {
     }

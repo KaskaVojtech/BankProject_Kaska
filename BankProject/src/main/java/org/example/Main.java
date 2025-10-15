@@ -1,37 +1,46 @@
 package org.example;
 
-import org.example.Accounts.BaseAccount;
-import org.example.Services.BankAccountService;
-import org.example.Factories.BankAccountFactory;
+import org.example.Accounts.AdultBankAccount;
+import org.example.AccountsOwners.AdultAccountOwner;
 import org.example.Factories.AccountOwnerFactory;
-import org.example.AccountsOwners.StudentAccountOwner;
+import org.example.Factories.BankAccountFactory;
+import org.example.Factories.PaymentCardFactory;
+import org.example.Services.AccountManager;
+import org.example.Services.AccountOperationService;
+import org.example.Services.AccountValidator;
+import org.example.Services.Generators.*;
+import org.example.cards.BasePaymentCard;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        BankAccountFactory bankAccountFactory = new BankAccountFactory();
-        BankAccountService bankAccountService = new BankAccountService();
 
-        AccountOwnerFactory accountOwnerFactory = new AccountOwnerFactory();
+        IDGenerator IDGenerator = new IDGenerator();
+        FourDigitsGenerator FourDigitsGenerator = new FourDigitsGenerator();
+        MonthGenerator MonthGenerator = new MonthGenerator();
+        YearGenerator YearGenerator = new YearGenerator();
+        CardNumberGenerator CardNumberGenerator = new CardNumberGenerator();
 
-        BaseAccount studentskyAccount = bankAccountFactory.createStudentBankAccount
-                (
-                1000,
-                accountOwnerFactory.createStudentAccountOwner("Prokop", "Buben", "Kyberna")
-                );
+        AccountManager manager = new AccountManager();
+        AccountValidator validator = new AccountValidator();
+        AccountOperationService service = new AccountOperationService(validator);
 
-        if(studentskyAccount.getOwner() instanceof StudentAccountOwner) {
-            System.out.println(((StudentAccountOwner) studentskyAccount.getOwner()).getSchool());
-        }
+        AccountOwnerFactory ownerFactory = new AccountOwnerFactory();
+        PaymentCardFactory paymentCardFactory = new PaymentCardFactory(IDGenerator,FourDigitsGenerator, YearGenerator, CardNumberGenerator, MonthGenerator);
+        BankAccountFactory bankAccountFactory = new BankAccountFactory(manager);
 
-        System.out.println(studentskyAccount.getBalance());
+        //------------------------------------------------------------------------------------
 
-        bankAccountService.increaseBalance(studentskyAccount, 100000);
+        AdultAccountOwner ao = ownerFactory.createAdultAccountOwner("Janek", "Rubeš");
+        AdultBankAccount ab = bankAccountFactory.createAdultBankAccount(1000, ao);
+        BasePaymentCard c = paymentCardFactory.createBasePaymentCard(ao.getFirstName() + " " + ao.getLastName());
 
-        System.out.println(studentskyAccount.getBalance());
+        ab.addCard(c);
 
+        service.processCardTransaction(manager, c, 500);
 
+        System.out.println("Nový zůstatek: " + ab.getBalance());
 
     }
 }

@@ -2,8 +2,8 @@ package org.example.Accounts;
 
 import org.example.AccountsOwners.BaseAccountOwner;
 
-public class AdultBankAccount extends BaseAccountOwner {
-    public AdultBankAccount(String uuid, BaseAccountOwner human) {
-        super(uuid, human.getFirstName(), human.getLastName());
+public class AdultBankAccount extends BankAccountWithCard {
+    public AdultBankAccount(String uuid, double balance, String accountNumber, BaseAccountOwner owner) {
+        super(uuid, balance, accountNumber, owner);
     }
 }
