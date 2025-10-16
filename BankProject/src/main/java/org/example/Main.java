@@ -16,6 +16,7 @@ import org.example.Card_classes.Factory_classes.PaymentCardFactory;
 import org.example.Account_classes.Service_classes.AccountManager;
 import org.example.Card_classes.Data_classes.BasePaymentCard;
 import org.example.Helper_classes.Generation_classes.*;
+import org.example.Helper_classes.Other.Logger;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -28,6 +29,8 @@ public class Main {
         YearGenerator yearGenerator = new YearGenerator();
         CardNumberGenerator cardNumberGenerator = new CardNumberGenerator();
 
+        Logger logger = new Logger();
+
         AccountManager accountManager = new AccountManager();
 
         ValidatorRegistry validatorRegistry = new ValidatorRegistry();
@@ -35,17 +38,14 @@ public class Main {
         PaymentValidator normalValidator = validatorRegistry.get(ValidatorType.NORMAL);
         PaymentValidator cardValidator = validatorRegistry.get(ValidatorType.CARD);
 
-        DepositService depositService = new DepositService(normalValidator);
-        WithdrawService withdrawService = new WithdrawService(normalValidator);
+        DepositService depositService = new DepositService(normalValidator,logger);
+        WithdrawService withdrawService = new WithdrawService(normalValidator,logger);
         TransferService transferService = new TransferService(normalValidator);
 
-        CardTransactionService cardTransactionService =
-                new CardTransactionService(accountManager,
-                        new DepositService(cardValidator),
-                        new WithdrawService(cardValidator));
+        CardTransactionService cardTransactionService = new CardTransactionService(accountManager, depositService, withdrawService);
 
         AccountOperationService accountOperationService =
-                new AccountOperationService(accountManager,validatorRegistry);
+                new AccountOperationService(accountManager,validatorRegistry, logger);
 
         AccountOwnerFactory ownerFactory = new AccountOwnerFactory();
         PaymentCardFactory paymentCardFactory = new PaymentCardFactory(
@@ -60,7 +60,5 @@ public class Main {
         BasePaymentCard card = paymentCardFactory.createBasePaymentCard(owner.getFirstName() + " " + owner.getLastName());
         bankAccount.addCard(card);
         accountOperationService.processCardTransaction(card, 500);
-
-        System.out.println("Nový zůstatek: " + bankAccount.getBalance());
     }
 }
