@@ -35,11 +35,5 @@ public class AccountManager {
         return null;
     }
 
-    public BaseAccount findAccountByNumber(String accountNumber) {
-        return accounts.stream()
-                .filter(a -> a.getAccountNumber().equals(accountNumber))
-                .findFirst()
-                .orElse(null);
-    }
 }
 
