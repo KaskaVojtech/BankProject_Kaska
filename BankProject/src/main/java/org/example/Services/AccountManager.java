@@ -35,5 +35,13 @@ public class AccountManager {
         return null;
     }
 
+    public BaseAccount findAccountByNumber(String accountNumber) {
+        for (BaseAccount a : accounts) {
+            if (a.getAccountNumber().equals(accountNumber)) {
+                return a;
+            }
+        }
+        return null;
+    }
 }
 
