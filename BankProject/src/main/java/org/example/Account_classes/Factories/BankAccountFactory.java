@@ -4,7 +4,7 @@ import org.example.Account_classes.Data_classes.BankAccount;
 import org.example.Account_classes.Data_classes.SavingBankAccount;
 import org.example.Account_classes.Data_classes.StudentBankAccount;
 import org.example.AccountOwner_classes.Data_classes.AdultAccountOwner;
-import org.example.Account_classes.Service_classes.AccountManager;
+import org.example.Account_classes.Service_classes.Manager_classes.AccountManager;
 import org.example.Helper_classes.Generation_classes.IDGenerator;
 import org.example.AccountOwner_classes.Data_classes.Core_classes.BaseAccountOwner;
 import org.example.AccountOwner_classes.Data_classes.StudentAccountOwner;

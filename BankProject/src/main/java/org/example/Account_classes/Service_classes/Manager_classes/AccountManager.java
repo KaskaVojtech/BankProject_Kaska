@@ -1,4 +1,4 @@
-package org.example.Account_classes.Service_classes;
+package org.example.Account_classes.Service_classes.Manager_classes;
 
 import org.example.Account_classes.Data_classes.Core.BankAccountWithCard;
 import org.example.Account_classes.Data_classes.Core.BaseAccount;
