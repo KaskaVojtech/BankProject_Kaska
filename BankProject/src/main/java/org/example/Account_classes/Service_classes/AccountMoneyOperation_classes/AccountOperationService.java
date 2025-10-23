@@ -4,11 +4,11 @@ import org.example.Account_classes.Data_classes.Core.BaseAccount;
 import org.example.Account_classes.Service_classes.AccountManager;
 import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.DepositService;
 import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.WithdrawService;
-import org.example.Account_classes.Service_classes.Validator_classes.Enums.ValidatorType;
-import org.example.Account_classes.Service_classes.Validator_classes.Interfaces.PaymentValidator;
-import org.example.Account_classes.Service_classes.Validator_classes.ValidatorRegistry;
+import org.example.Helper_classes.Other.Logger.Interfaces.Logger;
+import org.example.Helper_classes.Validator_classes.Enums.ValidatorType;
+import org.example.Helper_classes.Validator_classes.Interfaces.PaymentValidator;
+import org.example.Helper_classes.Validator_classes.ValidatorRegistry;
 import org.example.Card_classes.Data_classes.BasePaymentCard;
-import org.example.Helper_classes.Other.Logger;
 
 public class AccountOperationService {
 

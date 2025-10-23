@@ -1,4 +1,4 @@
-package org.example.Account_classes.Service_classes.Validator_classes.Interfaces;
+package org.example.Helper_classes.Validator_classes.Interfaces;
 
 import org.example.Account_classes.Data_classes.Core.BaseAccount;
 

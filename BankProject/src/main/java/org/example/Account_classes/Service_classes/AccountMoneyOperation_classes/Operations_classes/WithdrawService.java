@@ -1,8 +1,8 @@
 package org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes;
 
 import org.example.Account_classes.Data_classes.Core.BaseAccount;
-import org.example.Account_classes.Service_classes.Validator_classes.Interfaces.PaymentValidator;
-import org.example.Helper_classes.Other.Logger;
+import org.example.Helper_classes.Other.Logger.Interfaces.Logger;
+import org.example.Helper_classes.Validator_classes.Interfaces.PaymentValidator;
 
 public class WithdrawService {
     private final PaymentValidator validator;
