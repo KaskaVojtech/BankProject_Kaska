@@ -1,6 +1,7 @@
 package org.example.Helper_classes.Validator_classes.Interfaces;
 
 import org.example.Account_classes.Data_classes.Core.BaseAccount;
+import org.example.Helper_classes.Other.Logger.Interfaces.Logger;
 
 public interface PaymentValidator {
     boolean canDeposit(BaseAccount account, double amount);

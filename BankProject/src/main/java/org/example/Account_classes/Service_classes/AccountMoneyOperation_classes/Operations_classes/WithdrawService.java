@@ -5,19 +5,15 @@ import org.example.Helper_classes.Other.Logger.Interfaces.Logger;
 import org.example.Helper_classes.Validator_classes.Interfaces.PaymentValidator;
 
 public class WithdrawService {
-    private final Logger logger;
 
-    public WithdrawService(Logger logger) {
-        this.logger = logger;
+    public WithdrawService() {
     }
 
     public boolean withdraw(BaseAccount account, double amount, PaymentValidator validator) {
         if (!validator.canWithdraw(account, amount)) {
-            logger.log("Výběr zamítnut z účtu " + account.getAccountNumber() + " částka: " + amount);
             return false;
         }
         account.setBalance(account.getBalance() - amount);
-        logger.log("Výběr: " + amount + " Kč z účtu " + account.getAccountNumber() + " | nový zůstatek: " + account.getBalance());
         return true;
     }
 }

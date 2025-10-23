@@ -6,10 +6,8 @@ import org.example.Helper_classes.Validator_classes.Interfaces.PaymentValidator;
 
 public class TransferService {
 
-    final Logger logger;
 
-    public TransferService(Logger logger) {
-        this.logger = logger;
+    public TransferService() {
     }
 
     public boolean transfer(BaseAccount from, BaseAccount to, double amount, PaymentValidator validator) {
