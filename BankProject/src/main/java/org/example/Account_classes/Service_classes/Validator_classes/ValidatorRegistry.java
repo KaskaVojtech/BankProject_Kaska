@@ -11,9 +11,10 @@ import java.util.Map;
 
 public class ValidatorRegistry {
 
-    private final Map<ValidatorType, PaymentValidator> validators = new HashMap<>();
+    private final Map<ValidatorType, PaymentValidator> validators;
 
     public ValidatorRegistry() {
+        validators = new HashMap<>();
         register(ValidatorType.NORMAL, new NormalPaymentValidator());
         register(ValidatorType.CARD, new CardPaymentValidator());
     }

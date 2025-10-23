@@ -1,9 +1,9 @@
-package org.example.Account_classes.Service_classes.AccountOperation_classes;
+package org.example.Account_classes.Service_classes.AccountMoneyOperation_classes;
 
 import org.example.Account_classes.Data_classes.Core.BaseAccount;
 import org.example.Account_classes.Service_classes.AccountManager;
-import org.example.Account_classes.Service_classes.AccountOperation_classes.Simple_classes.DepositService;
-import org.example.Account_classes.Service_classes.AccountOperation_classes.Simple_classes.WithdrawService;
+import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.DepositService;
+import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.WithdrawService;
 import org.example.Account_classes.Service_classes.Validator_classes.Enums.ValidatorType;
 import org.example.Account_classes.Service_classes.Validator_classes.Interfaces.PaymentValidator;
 import org.example.Account_classes.Service_classes.Validator_classes.ValidatorRegistry;
