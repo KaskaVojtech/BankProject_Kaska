@@ -9,8 +9,8 @@ import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes
 import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.DepositService;
 import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.TransferService;
 import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.WithdrawService;
-import org.example.Helper_classes.Validator_classes.Simple_classes.CardPaymentValidator;
-import org.example.Helper_classes.Validator_classes.Simple_classes.NormalPaymentValidator;
+import org.example.Helper_classes.Validator_classes.ValidatorType_classes.CardPaymentValidator;
+import org.example.Helper_classes.Validator_classes.ValidatorType_classes.NormalPaymentValidator;
 import org.example.Helper_classes.Validator_classes.ValidatorRegistry;
 import org.example.Card_classes.Factory_classes.PaymentCardFactory;
 import org.example.Account_classes.Service_classes.Manager_classes.AccountManager;

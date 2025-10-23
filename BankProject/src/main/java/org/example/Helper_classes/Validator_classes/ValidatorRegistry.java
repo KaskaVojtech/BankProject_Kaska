@@ -2,8 +2,8 @@ package org.example.Helper_classes.Validator_classes;
 
 import org.example.Helper_classes.Validator_classes.Enums.ValidatorType;
 import org.example.Helper_classes.Validator_classes.Interfaces.PaymentValidator;
-import org.example.Helper_classes.Validator_classes.Simple_classes.CardPaymentValidator;
-import org.example.Helper_classes.Validator_classes.Simple_classes.NormalPaymentValidator;
+import org.example.Helper_classes.Validator_classes.ValidatorType_classes.CardPaymentValidator;
+import org.example.Helper_classes.Validator_classes.ValidatorType_classes.NormalPaymentValidator;
 
 import java.util.HashMap;
 import java.util.Map;
