@@ -10,16 +10,22 @@ import org.example.Helper_classes.Validator_classes.Interfaces.PaymentValidator;
 import org.example.Helper_classes.Validator_classes.ValidatorRegistry;
 import org.example.Card_classes.Data_classes.BasePaymentCard;
 
-public class AccountOperationService {
+public class AccountOperationManager {
 
     private final ValidatorRegistry validatorRegistry;
     private final AccountManager accountManager;
     private final Logger logger;
+    private final OperationsService operationsService;
 
-    public AccountOperationService(AccountManager accountManager, ValidatorRegistry validatorRegistry, Logger logger) {
+    public AccountOperationManager(AccountManager accountManager,
+                                   ValidatorRegistry validatorRegistry,
+                                   Logger logger,
+                                   OperationsService operationsService) {
+
         this.accountManager = accountManager;
         this.validatorRegistry = validatorRegistry;
         this.logger = logger;
+        this.operationsService = operationsService;
     }
 
     public boolean processCardTransaction(BasePaymentCard card, double amount) {
@@ -36,14 +42,12 @@ public class AccountOperationService {
     }
 
     private boolean proccessTransaction(BaseAccount account, double amount, PaymentValidator validator) {
-        DepositService depositService = new DepositService(validator, logger);
-        WithdrawService withdrawService = new WithdrawService(validator, logger);
-
         boolean success;
+
         if (amount >= 0) {
-            success = depositService.deposit(account, amount);
+            success = operationsService.deposit(account, amount, validator);
         } else {
-            success = withdrawService.withdraw(account, Math.abs(amount));
+            success = operationsService.withdraw(account, Math.abs(amount), validator);
         }
 
         return success;

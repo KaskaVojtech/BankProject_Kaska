@@ -4,7 +4,8 @@ import org.example.Account_classes.Data_classes.BankAccount;
 import org.example.AccountOwner_classes.Data_classes.AdultAccountOwner;
 import org.example.AccountOwner_classes.Factory_classes.AccountOwnerFactory;
 import org.example.Account_classes.Factories.BankAccountFactory;
-import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.AccountOperationService;
+import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.AccountOperationManager;
+import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.OperationsService;
 import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.DepositService;
 import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.TransferService;
 import org.example.Account_classes.Service_classes.AccountMoneyOperation_classes.Operations_classes.WithdrawService;
@@ -34,16 +35,18 @@ public class Main {
 
         AccountManager accountManager = new AccountManager();
 
-
         NormalPaymentValidator normalPaymentValidator = new NormalPaymentValidator();
         CardPaymentValidator cardPaymentValidator = new CardPaymentValidator();
         ValidatorRegistry validatorRegistry = new ValidatorRegistry(normalPaymentValidator, cardPaymentValidator);
 
-        PaymentValidator normalValidator = validatorRegistry.get(ValidatorType.NORMAL);
-        PaymentValidator cardValidator = validatorRegistry.get(ValidatorType.CARD);
+        DepositService depositService = new DepositService(consoleLogger);
+        TransferService transferService = new TransferService(consoleLogger);
+        WithdrawService withdrawService = new WithdrawService(consoleLogger);
 
-        AccountOperationService accountOperationService =
-                new AccountOperationService(accountManager,validatorRegistry, consoleLogger);
+        OperationsService operationsService = new OperationsService(depositService, transferService, withdrawService);
+
+        AccountOperationManager accountOperationManager =
+                new AccountOperationManager(accountManager,validatorRegistry, consoleLogger, operationsService);
 
         AccountOwnerFactory ownerFactory = new AccountOwnerFactory();
         PaymentCardFactory paymentCardFactory = new PaymentCardFactory(
@@ -57,6 +60,6 @@ public class Main {
         BankAccount bankAccount = bankAccountFactory.createBankAccount(1000, owner);
         BasePaymentCard card = paymentCardFactory.createBasePaymentCard(owner.getFirstName() + " " + owner.getLastName());
         bankAccount.addCard(card);
-        accountOperationService.processCardTransaction(card, 500);
+        accountOperationManager.processCardTransaction(card, 500);
     }
 }

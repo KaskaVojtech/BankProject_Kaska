@@ -5,15 +5,13 @@ import org.example.Helper_classes.Other.Logger.Interfaces.Logger;
 import org.example.Helper_classes.Validator_classes.Interfaces.PaymentValidator;
 
 public class DepositService {
-    private final PaymentValidator validator;
     private final Logger logger;
 
-    public DepositService(PaymentValidator validator, Logger logger) {
-        this.validator = validator;
+    public DepositService(Logger logger) {
         this.logger = logger;
     }
 
-    public boolean deposit(BaseAccount account, double amount) {
+    public boolean deposit(BaseAccount account, double amount, PaymentValidator validator) {
         if (!validator.canDeposit(account, amount)) {
             logger.log("Vklad zamítnut na účet " + account.getAccountNumber() + " částka: " + amount);
             return false;
