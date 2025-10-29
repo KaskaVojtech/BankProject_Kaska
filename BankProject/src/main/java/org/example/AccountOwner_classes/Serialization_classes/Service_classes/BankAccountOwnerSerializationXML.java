@@ -1,6 +1,7 @@
 package org.example.AccountOwner_classes.Serialization_classes.Service_classes;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.google.inject.Inject;
 import org.example.AccountOwner_classes.Data_classes.Core_classes.BaseAccountOwner;
 import org.example.AccountOwner_classes.Factory_classes.AccountOwnerSerializedFactory;
 import org.example.AccountOwner_classes.Serialization_classes.Interfaces.Serialization;
@@ -8,7 +9,9 @@ import org.example.AccountOwner_classes.Serialization_classes.Data_classes.Seria
 
 public class BankAccountOwnerSerializationXML implements Serialization {
 
+    @Inject
     AccountOwnerSerializedFactory accountOwnerSerializedFactory;
+    @Inject
     XmlMapper xmlMapper;
 
     public BankAccountOwnerSerializationXML(AccountOwnerSerializedFactory accountOwnerSerializedFactory, XmlMapper xmlMapper) {

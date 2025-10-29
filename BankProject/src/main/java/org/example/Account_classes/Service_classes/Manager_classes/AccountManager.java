@@ -1,18 +1,17 @@
 package org.example.Account_classes.Service_classes.Manager_classes;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.example.Account_classes.Data_classes.Core.BankAccountWithCard;
 import org.example.Account_classes.Data_classes.Core.BaseAccount;
 import org.example.Card_classes.Data_classes.BasePaymentCard;
 
 import java.util.*;
-
+@Singleton
 public class AccountManager {
+    @Inject
+    private List<BaseAccount> accounts;
 
-    private final List<BaseAccount> accounts;
-
-    public AccountManager() {
-        this.accounts = new ArrayList<>();
-    }
 
     public void addAccount(BaseAccount account) {
         accounts.add(account);

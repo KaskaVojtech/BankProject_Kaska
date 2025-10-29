@@ -1,17 +1,18 @@
 package org.example.Helper_classes.Validator_classes.ValidatorType_classes;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.example.Account_classes.Data_classes.Core.BaseAccount;
 import org.example.Helper_classes.Other.Logger.Interfaces.Logger;
 import org.example.Helper_classes.Validator_classes.Interfaces.PaymentValidator;
 
+@Singleton
 public class CardPaymentValidator implements PaymentValidator {
 
     private double cardLimit = 5_000;
-    private Logger logger;
 
-    public CardPaymentValidator(Logger logger) {
-        this.logger = logger;
-    }
+    @Inject
+    private Logger logger;
 
     @Override
     public boolean canDeposit(BaseAccount account, double amount) {

@@ -1,11 +1,18 @@
 package org.example.AccountOwner_classes.Factory_classes;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.example.Helper_classes.Generation_classes.IDGenerator;
 import org.example.AccountOwner_classes.Data_classes.AdultAccountOwner;
 import org.example.AccountOwner_classes.Data_classes.StudentAccountOwner;
-
+@Singleton
 public class AccountOwnerFactory {
-    IDGenerator IDGenerator = new IDGenerator();
+    @Inject
+    IDGenerator IDGenerator;
+
+    public AccountOwnerFactory(IDGenerator IDGenerator) {
+        this.IDGenerator = IDGenerator;
+    }
 
     public AdultAccountOwner createAdultAccountOwner(String name, String surname) {
         return new AdultAccountOwner(IDGenerator.makeID_UUID(), name, surname);

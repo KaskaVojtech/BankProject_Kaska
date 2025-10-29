@@ -1,9 +1,15 @@
 package org.example.Helper_classes.Generation_classes;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
 import java.util.Random;
 
+@Singleton
 public class YearGenerator {
-    private Random random = new Random();
+    @Inject
+    private Random random;
+
     public String generateYear() {
         int year = 2025 + random.nextInt(11);
         return String.valueOf(year);

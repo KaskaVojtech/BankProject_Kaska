@@ -1,9 +1,14 @@
 package org.example.Helper_classes.Generation_classes;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
 import java.util.Random;
 
+@Singleton
 public class MonthGenerator {
-    private Random random = new Random();
+    @Inject
+    private Random random;
     public String generateMonth() {
         int month = 1 + random.nextInt(12);
         return String.format("%02d", month);

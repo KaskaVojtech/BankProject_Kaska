@@ -1,12 +1,16 @@
 package org.example.Helper_classes.Generation_classes;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
 import java.util.Random;
 import java.util.UUID;
-
+@Singleton
 public class IDGenerator {
 
     private int counter = 0;
-    private  Random random = new Random();
+    @Inject
+    private  Random random;
 
     public String makeID_UUID(){
         return UUID.randomUUID().toString();

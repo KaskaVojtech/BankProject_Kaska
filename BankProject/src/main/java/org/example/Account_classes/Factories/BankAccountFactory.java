@@ -1,5 +1,7 @@
 package org.example.Account_classes.Factories;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.example.Account_classes.Data_classes.BankAccount;
 import org.example.Account_classes.Data_classes.SavingBankAccount;
 import org.example.Account_classes.Data_classes.StudentBankAccount;
@@ -8,16 +10,13 @@ import org.example.Account_classes.Service_classes.Manager_classes.AccountManage
 import org.example.Helper_classes.Generation_classes.IDGenerator;
 import org.example.AccountOwner_classes.Data_classes.Core_classes.BaseAccountOwner;
 import org.example.AccountOwner_classes.Data_classes.StudentAccountOwner;
-
+@Singleton
 public class BankAccountFactory {
 
-    private IDGenerator IDGenerator = new IDGenerator();
-
+    @Inject
+    private IDGenerator IDGenerator;
+    @Inject
     public AccountManager accountManager;
-
-    public BankAccountFactory(AccountManager accountManager) {
-        this.accountManager = accountManager;
-    }
 
     public BankAccount createBankAccount(double balance, AdultAccountOwner owner) {
         BankAccount acc = new BankAccount(IDGenerator.makeID_UUID(), balance, IDGenerator.makeAccountNumber(), owner);
