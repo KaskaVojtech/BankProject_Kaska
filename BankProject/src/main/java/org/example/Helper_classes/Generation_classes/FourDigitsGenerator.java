@@ -11,6 +11,10 @@ public class FourDigitsGenerator {
     @Inject
     private Random random;
 
+    public FourDigitsGenerator(Random random) {
+        this.random = random;
+    }
+
     public String generateFourDigit() {
         int number = 1000 + random.nextInt(9000);
         return String.valueOf(number);

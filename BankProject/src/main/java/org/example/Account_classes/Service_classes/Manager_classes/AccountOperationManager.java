@@ -17,7 +17,11 @@ public class AccountOperationManager {
     @Inject
     private  OperationsService operationsService;
 
-
+    public AccountOperationManager(ValidatorRegistry validatorRegistry, AccountManager accountManager, OperationsService operationsService) {
+        this.validatorRegistry = validatorRegistry;
+        this.accountManager = accountManager;
+        this.operationsService = operationsService;
+    }
 
     public boolean processCardTransaction(BasePaymentCard card, double amount) {
         BaseAccount account = accountManager.findAccountByCard(card);

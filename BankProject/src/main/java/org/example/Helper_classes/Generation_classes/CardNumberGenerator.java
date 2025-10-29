@@ -10,6 +10,10 @@ public class CardNumberGenerator {
     @Inject
     private Random random;
 
+    public CardNumberGenerator(Random random) {
+        this.random = random;
+    }
+
     public String generateCardNumber() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 16; i++) {

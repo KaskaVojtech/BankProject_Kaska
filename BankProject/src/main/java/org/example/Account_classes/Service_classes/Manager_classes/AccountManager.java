@@ -12,6 +12,9 @@ public class AccountManager {
     @Inject
     private List<BaseAccount> accounts;
 
+    public AccountManager() {
+        accounts = new ArrayList<>();
+    }
 
     public void addAccount(BaseAccount account) {
         accounts.add(account);

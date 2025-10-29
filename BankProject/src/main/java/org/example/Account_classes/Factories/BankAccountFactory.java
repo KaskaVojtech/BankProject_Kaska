@@ -18,6 +18,11 @@ public class BankAccountFactory {
     @Inject
     public AccountManager accountManager;
 
+    public BankAccountFactory(IDGenerator idGenerator, AccountManager accountManager) {
+        this.IDGenerator = idGenerator;
+        this.accountManager = accountManager;
+    }
+
     public BankAccount createBankAccount(double balance, AdultAccountOwner owner) {
         BankAccount acc = new BankAccount(IDGenerator.makeID_UUID(), balance, IDGenerator.makeAccountNumber(), owner);
         accountManager.addAccount(acc);

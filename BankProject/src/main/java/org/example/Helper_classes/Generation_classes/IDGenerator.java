@@ -12,6 +12,10 @@ public class IDGenerator {
     @Inject
     private  Random random;
 
+    public IDGenerator(Random random) {
+        this.random = random;
+    }
+
     public String makeID_UUID(){
         return UUID.randomUUID().toString();
     }

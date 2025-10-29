@@ -17,6 +17,12 @@ public class OperationsService {
     @Inject
     TransferService transferService;
 
+    public OperationsService(DepositService depositService, WithdrawService withdrawService, TransferService transferService) {
+        this.depositService = depositService;
+        this.withdrawService = withdrawService;
+        this.transferService = transferService;
+    }
+
     public boolean deposit(BaseAccount acc, double amount, PaymentValidator validator) {
         return depositService.deposit(acc, amount, validator);
     }
