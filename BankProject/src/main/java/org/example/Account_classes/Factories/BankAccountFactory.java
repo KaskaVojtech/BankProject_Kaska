@@ -41,6 +41,8 @@ public class BankAccountFactory {
         );
         acc.addCard(card);
         accountManager.addAccount(acc);
+        System.out.println("test");
+        System.out.println(accountManager.getAccounts().size());
         return acc;
     }
 
