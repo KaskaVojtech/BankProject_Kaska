@@ -10,6 +10,7 @@ public class AccountOwnerFactory {
     @Inject
     IDGenerator IDGenerator;
 
+    @Inject
     public AccountOwnerFactory(IDGenerator IDGenerator) {
         this.IDGenerator = IDGenerator;
     }

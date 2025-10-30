@@ -16,7 +16,7 @@ public class OperationsService {
     WithdrawService withdrawService;
     @Inject
     TransferService transferService;
-
+    @Inject
     public OperationsService(DepositService depositService, WithdrawService withdrawService, TransferService transferService) {
         this.depositService = depositService;
         this.withdrawService = withdrawService;

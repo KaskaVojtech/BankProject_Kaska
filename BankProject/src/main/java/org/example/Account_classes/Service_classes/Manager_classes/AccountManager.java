@@ -9,9 +9,9 @@ import org.example.Card_classes.Data_classes.BasePaymentCard;
 import java.util.*;
 @Singleton
 public class AccountManager {
-    @Inject
-    private List<BaseAccount> accounts;
 
+    private List<BaseAccount> accounts;
+    @Inject
     public AccountManager() {
         accounts = new ArrayList<>();
     }

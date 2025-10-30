@@ -22,7 +22,8 @@ public class ValidatorRegistry {
     @Inject
     CardPaymentValidator cardPaymentValidator;
 
-    public ValidatorRegistry(@Named("normal") NormalPaymentValidator normalPaymentValidator,@Named("card") CardPaymentValidator cardPaymentValidator) {
+    @Inject
+    public ValidatorRegistry(NormalPaymentValidator normalPaymentValidator, CardPaymentValidator cardPaymentValidator) {
         validators = new HashMap<>();
         this.normalPaymentValidator = normalPaymentValidator;
         this.cardPaymentValidator = cardPaymentValidator;

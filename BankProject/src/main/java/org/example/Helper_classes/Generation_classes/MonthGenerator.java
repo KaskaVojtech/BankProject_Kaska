@@ -10,6 +10,7 @@ public class MonthGenerator {
     @Inject
     private Random random;
 
+    @Inject
     public MonthGenerator(Random random) {
         this.random = random;
     }

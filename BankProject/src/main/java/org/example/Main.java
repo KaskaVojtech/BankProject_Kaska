@@ -11,6 +11,5 @@ public class Main {
         Injector injector = Guice.createInjector(new BankInjector());
         App app = injector.getInstance(App.class);
         app.run();
-
     }
 }

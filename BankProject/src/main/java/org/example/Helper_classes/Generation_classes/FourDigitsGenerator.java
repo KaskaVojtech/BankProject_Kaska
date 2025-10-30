@@ -11,6 +11,7 @@ public class FourDigitsGenerator {
     @Inject
     private Random random;
 
+    @Inject
     public FourDigitsGenerator(Random random) {
         this.random = random;
     }

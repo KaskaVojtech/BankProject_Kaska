@@ -17,6 +17,7 @@ public class AccountOperationManager {
     @Inject
     private  OperationsService operationsService;
 
+    @Inject
     public AccountOperationManager(ValidatorRegistry validatorRegistry, AccountManager accountManager, OperationsService operationsService) {
         this.validatorRegistry = validatorRegistry;
         this.accountManager = accountManager;

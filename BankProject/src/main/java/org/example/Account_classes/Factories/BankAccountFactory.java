@@ -3,10 +3,12 @@ package org.example.Account_classes.Factories;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.example.Account_classes.Data_classes.BankAccount;
+import org.example.Account_classes.Data_classes.Core.BankAccountWithCard;
 import org.example.Account_classes.Data_classes.SavingBankAccount;
 import org.example.Account_classes.Data_classes.StudentBankAccount;
 import org.example.AccountOwner_classes.Data_classes.AdultAccountOwner;
 import org.example.Account_classes.Service_classes.Manager_classes.AccountManager;
+import org.example.Card_classes.Data_classes.BasePaymentCard;
 import org.example.Helper_classes.Generation_classes.IDGenerator;
 import org.example.AccountOwner_classes.Data_classes.Core_classes.BaseAccountOwner;
 import org.example.AccountOwner_classes.Data_classes.StudentAccountOwner;
@@ -18,6 +20,7 @@ public class BankAccountFactory {
     @Inject
     public AccountManager accountManager;
 
+    @Inject
     public BankAccountFactory(IDGenerator idGenerator, AccountManager accountManager) {
         this.IDGenerator = idGenerator;
         this.accountManager = accountManager;
@@ -25,6 +28,18 @@ public class BankAccountFactory {
 
     public BankAccount createBankAccount(double balance, AdultAccountOwner owner) {
         BankAccount acc = new BankAccount(IDGenerator.makeID_UUID(), balance, IDGenerator.makeAccountNumber(), owner);
+        accountManager.addAccount(acc);
+        return acc;
+    }
+
+    public BankAccountWithCard createBankAccountWithCard(double balance, AdultAccountOwner owner, BasePaymentCard card) {
+        BankAccountWithCard acc = new BankAccountWithCard(
+                IDGenerator.makeID_UUID(),
+                balance,
+                IDGenerator.makeAccountNumber(),
+                owner
+        );
+        acc.addCard(card);
         accountManager.addAccount(acc);
         return acc;
     }

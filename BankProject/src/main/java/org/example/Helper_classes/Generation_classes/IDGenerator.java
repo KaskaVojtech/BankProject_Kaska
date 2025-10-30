@@ -12,6 +12,7 @@ public class IDGenerator {
     @Inject
     private  Random random;
 
+    @Inject
     public IDGenerator(Random random) {
         this.random = random;
     }

@@ -10,6 +10,7 @@ public class YearGenerator {
     @Inject
     private Random random;
 
+    @Inject
     public YearGenerator(Random random) {
         this.random = random;
     }

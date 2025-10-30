@@ -9,7 +9,7 @@ import java.util.Random;
 public class CardNumberGenerator {
     @Inject
     private Random random;
-
+    @Inject
     public CardNumberGenerator(Random random) {
         this.random = random;
     }

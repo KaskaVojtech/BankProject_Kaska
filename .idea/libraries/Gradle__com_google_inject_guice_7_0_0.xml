@@ -5,6 +5,8 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.inject/guice/7.0.0/ccc518677b9367d45f99dfa592c9b039f07687d3/guice-7.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.inject/guice/7.0.0/386789ff7ba84553eb965eecee39c5a3ee6454d/guice-7.0.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

@@ -17,7 +17,7 @@ public class PaymentCardFactory {
     CardNumberGenerator cardNumberGenerator;
     @Inject
     MonthGenerator monthGenerator;
-
+    @Inject
     public BasePaymentCard createBasePaymentCard(String cardHolder) {
         return new BasePaymentCard(IDGenerator.makeID_UUID(), cardNumberGenerator.generateCardNumber(),fourDigitsGenerator.generateFourDigit(), fourDigitsGenerator.generateFourDigit(), monthGenerator.generateMonth(), yearGenerator.generateYear(),cardHolder);
     }
