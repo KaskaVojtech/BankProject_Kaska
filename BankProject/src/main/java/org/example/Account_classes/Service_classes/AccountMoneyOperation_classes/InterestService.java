@@ -8,20 +8,26 @@ import org.example.Account_classes.Data_classes.SavingBankAccount;
 import org.example.Account_classes.Service_classes.Manager_classes.AccountManager;
 import org.example.Helper_classes.Other.Cron_classes.CronService;
 import org.example.Helper_classes.Other.Cron_classes.CronTask;
+import org.example.Helper_classes.Validator_classes.ValidatorType_classes.NormalPaymentValidator;
 
 import java.time.Duration;
 @Singleton
 public class InterestService implements CronTask {
-
+    @Inject
+    OperationsService service;
     @Inject
     AccountManager accountManager;
+    @Inject
+    NormalPaymentValidator normalPaymentValidator;
+
+
 
     Duration interval = Duration.ofSeconds(5);
 
     private void calculateInterest(SavingBankAccount account) {
         System.out.println("------------------------------");
         System.out.println(account.getBalance());
-        account.setBalance(account.getBalance() * (1 + account.interestRate));
+        service.deposit(account,(account.getBalance() * (account.interestRate /100)),normalPaymentValidator);
          System.out.println(account.getBalance());
         System.out.println("------------------------------");
     }
