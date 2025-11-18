@@ -43,7 +43,7 @@ public class App {
         BasePaymentCard card = paymentCardFactory.createBasePaymentCard(owner.getFirstName() + " " + owner.getLastName());
         BankAccountWithCard bankAccount = bankAccountFactory.createBankAccountWithCard(1000, owner, card);
 
-        SavingBankAccount savingBankAccount = bankAccountFactory.createSavingBankAccount(1000,owner,0.5/12);
+        SavingBankAccount savingBankAccount = bankAccountFactory.createSavingBankAccount(1000,owner,3.6/12);
 
         accountOperationManager.processCardTransaction(card, 1000);
         accountOperationManager.processNormalTransaction(bankAccount, -3000);
