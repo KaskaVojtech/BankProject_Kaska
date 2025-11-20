@@ -38,6 +38,10 @@ public class CronService {
         scheduler.scheduleAtFixedRate(this::tick, 0, 500, TimeUnit.MILLISECONDS);
     }
 
+    public void add(CronTask ct) {
+        cronTasks.add(new CronScheduledTask(ct));
+    }
+
     private void tick() {
         long now = System.currentTimeMillis();
         for (CronScheduledTask cronTask : cronTasks) {

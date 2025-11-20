@@ -2,41 +2,61 @@ package org.example.Account_classes.Service_classes.AccountMoneyOperation_classe
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.example.Account_classes.Data_classes.BankAccount;
+import org.example.Helper_classes.Other.Logger.ConsoleLogger;
 import org.example.Account_classes.Data_classes.Core.BaseAccount;
 import org.example.Account_classes.Data_classes.SavingBankAccount;
 import org.example.Account_classes.Service_classes.Manager_classes.AccountManager;
-import org.example.Helper_classes.Other.Cron_classes.CronService;
 import org.example.Helper_classes.Other.Cron_classes.CronTask;
-import org.example.Helper_classes.Validator_classes.ValidatorType_classes.NormalPaymentValidator;
+import org.example.Account_classes.Transaction_classes.TransactionManager;
+import org.example.Account_classes.Transaction_classes.TransactionType;
 
 import java.time.Duration;
 @Singleton
 public class InterestService implements CronTask {
-    @Inject
-    OperationsService service;
-    @Inject
-    AccountManager accountManager;
-    @Inject
-    NormalPaymentValidator normalPaymentValidator;
 
+    @Inject
+    private AccountManager accountManager;
 
+    @Inject
+    private TransactionManager transactionManager;
 
-    Duration interval = Duration.ofSeconds(5);
+    @Inject
+    private ConsoleLogger logger;
+
+    private final Duration interval = Duration.ofSeconds(5);
 
     private void calculateInterest(SavingBankAccount account) {
-        System.out.println("------------------------------");
-        System.out.println(account.getBalance());
-        service.deposit(account,(account.getBalance() * (account.interestRate /100)),normalPaymentValidator);
-         System.out.println(account.getBalance());
-        System.out.println("------------------------------");
+
+        double currentBalance = account.getBalance();
+        double interestRate = account.interestRate;
+        double interestAmount = currentBalance * (interestRate / 100);
+
+        logger.log("------------------------------");
+        logger.log("Calculating interest for account: " + account.getAccountNumber());
+        logger.log("Balance before interest: " + currentBalance);
+        logger.log("Interest amount: " + interestAmount);
+
+        try {
+            transactionManager.processNormalTransaction(
+                    TransactionType.DEPOSIT,
+                    null,               // sender = žádný (úrok není od osoby)
+                    account,            // receiver = účet ke kterému to patří
+                    interestAmount
+            );
+        } catch (Exception e) {
+            logger.log("Interest deposit failed: " + e.getMessage());
+            return;
+        }
+
+        logger.log("Balance after interest: " + account.getBalance());
+        logger.log("------------------------------");
     }
 
     @Override
     public void doSomething() {
-        for(BaseAccount acc : accountManager.getAccounts()){
-            if(acc instanceof SavingBankAccount){
-                calculateInterest((SavingBankAccount)acc);
+        for (BaseAccount acc : accountManager.getAccounts()) {
+            if (acc instanceof SavingBankAccount savingAcc) {
+                calculateInterest(savingAcc);
             }
         }
     }
@@ -44,12 +64,6 @@ public class InterestService implements CronTask {
     @Override
     public Duration getInterval() {
         return interval;
-    }
-
-    @Override
-    @Inject
-    public void assingToService(CronService cronService) {
-        cronService.addCronTask(this);
     }
 
 }
